@@ -1,0 +1,20 @@
+{
+  "name": "adon",
+  "version": "1.0.0",
+  "description": "Antonio De Lucreziis's Object Notation",
+  "main": "index.js",
+  "scripts": {
+    "build": "pegjs grammar.pegjs"
+  },
+  "keywords": [
+    "adon format",
+    "syntax",
+    "data",
+    "object notation"
+  ],
+  "author": "aziis98 <antonio.delucreziis@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "pegjs": "^0.10.0"
+  }
+}

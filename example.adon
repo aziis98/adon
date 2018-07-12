@@ -1,0 +1,32 @@
+Config = {
+
+   Title = "This is an example of the syntax"
+	Port = 8080
+
+	Routes = [
+		{
+			Pattern = "/"
+			File = "/src/index.html"
+		}
+		{
+			Pattern = "/about"
+			File = "/src/about.html"
+		}
+	]
+
+	Another List [
+		1, 2, 3
+		4, 5,
+		6
+		7
+		{ 
+			First Prop = 12
+		}
+	]
+
+	Proposition1   1 1.0 = "This works"
+
+	Front End Framework = React JS
+	Back End Framework = Express JS
+
+}
