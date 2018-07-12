@@ -1,8 +1,8 @@
 {
-  "name": "adon",
+  "name": "adon-parser",
   "version": "1.0.0",
   "description": "Antonio De Lucreziis's Object Notation",
-  "main": "index.js",
+  "main": "grammar.js",
   "scripts": {
     "build": "pegjs grammar.pegjs"
   },
