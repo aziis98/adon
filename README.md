@@ -12,30 +12,30 @@ My notation is a bit lighter on quotes than JSON and in a millennium first (sarc
 
 Config {
 
-   Title = "This is an example of the syntax"
-	Port = 8080
+    Title = "This is an example of the syntax"
+    Port = 8080
 
-	Routes = [
-		{
-			Pattern = "/"
-			File = "/src/index.html"
-		}
-		{
-			Pattern = "/about"
-			File = "/src/about.html"
-		}
-	]
+    Routes = [
+        {
+            Pattern = "/"
+            File = "/src/index.html"
+        }
+        {
+            Pattern = "/about"
+            File = "/src/about.html"
+        }
+    ]
 
-	Another List [
-		1, 2, 3
-		4, 5,
-		6
-		7
-		{ First Prop = 12.0 }
-	]
+    Another List [
+        1, 2, 3
+        4, 5,
+        6
+        7
+        { First Prop = 12.0 }
+    ]
 
-	Front End Framework = React JS
-	Back End Framework = Express JS
+    Front End Framework = React JS
+    Back End Framework = Express JS
 
 }
 
