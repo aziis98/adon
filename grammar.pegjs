@@ -3,8 +3,8 @@
 //
 
 {
-	function AdonSymbol(text) {
-	  this.text = text;
+	function AdonSymbol(name) {
+	  this.name = name;
 	}
 	
 	function Measure(value, unit) {
@@ -17,7 +17,7 @@ start
 	= root:PropertyList
   
 PropertyList
-	= head:(_ KeyValue)? tail:(nl _ KeyValue)* blank {
+	= head:(_ KeyValue)? tail:((nl / _ ",") _ KeyValue)* blank? {
 	  if (head) {
 		return [head[1]].concat(tail.map(prop => prop[2]))
 			.reduce((prop, acc) => Object.assign(acc, prop), {});
@@ -44,9 +44,7 @@ Value
 	= value:(Identifier / String / Number / Object / List) { return value }
 
 Object
-	= "{" nl pl:PropertyList "}" { 
-	  return pl
-	}
+	= "{" nl? pl:PropertyList "}" { return pl }
   
 List
 	= "[" blank values:( Value blank? ","? blank? )* "]" {
@@ -54,18 +52,20 @@ List
 	}
   
 Key
-	= id:Identifier { return id.text }
+	= id:Identifier { return id.name }
 	
 // Identifier
 // ----------
 
 Identifier "identifier"
-	= IdentifierStart IdentifierPart* { return new AdonSymbol(text().trim()) }
+	= IdentifierStart IdentifierPart* { 
+		return new AdonSymbol(text().trim())
+	}
 
 IdentifierStart
-	= [^\n\r\t={}\[\]"' 0-9]
+	= [^\n\r\t={}\[\]"', 0-9]
 IdentifierPart
-	= [^\n\r\t={}\[\]'"]
+	= [^\n\r\t={}\[\]'",]
 
 // Word
 //	= [a-zA-Z][^ \t\n\r={}\[\],""]* { return text() }
@@ -77,7 +77,9 @@ Number
 	= HexInteger / Measure / Decimal / Integer
 
 Measure
-	= value:(Decimal / Integer / HexInteger) _? unit:([a-zA-Z][a-zA-Z0-9]) { return new Measure(value, unit.join('')) }
+	= value:(Decimal / Integer) _? unit:([a-zA-Z][a-zA-Z0-9]) {
+		return new Measure(value, unit.join(''))
+	}
 HexInteger "hexnum"
 	= "0x" [0-9a-fA-F]+ { return parseInt(text().substr(2), 16) }
 Decimal "decimal"

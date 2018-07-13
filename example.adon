@@ -14,6 +14,8 @@ Config = {
         }
     ]
 
+    My List = [ Prova, Test ]
+
     Another List [
         1, 2, 3
         4, 5,
@@ -25,6 +27,12 @@ Config = {
     ]
 
     Proposition1   1 1.0 = "This works"
+
+    Direction = Left -> Right
+
+    Inlined { prova = 12, test = 75 }
+
+    Point 1 { x = 120, y = 500.0, z = 10.0mm }
 
     Front End Framework = React JS
     Back End Framework = Express JS
